@@ -1,0 +1,2514 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Safia Haute Pâtisserie ✦ Dunyo Tan Olingan Eksklyuziv Qandolat Uyi</title>
+<link rel="icon" type="image/svg+xml" href="logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Great+Vibes&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+<!-- QR generator, JS QR Scanner & Confetti -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   ROYAL HAUTE PÂTISSERIE LUXURY PALETTE (MICHELIN-STAR AESTHETICS)
+══════════════════════════════════════════════════════════════════ */
+:root {
+  --bg-deep: #050307;
+  --bg-surface: #0a0710;
+  --bg-card: rgba(18, 12, 24, 0.88);
+  --gold-glow: #fff2c6;
+  --gold-light: #f7d594;
+  --gold-main: #dfa84f;
+  --gold-dark: #96671a;
+  --gold-metallic: linear-gradient(135deg, #fff7de 0%, #f7d594 25%, #dfa84f 55%, #b5802b 80%, #ffd996 100%);
+  --rose-light: #ffdbe4;
+  --rose-main: #e87b96;
+  --rose-deep: #8a1f3a;
+  --txt-main: #ffffff;
+  --txt-sub: #dcd0d9;
+  --txt-muted: #8c7785;
+  --border-gold: rgba(223, 168, 79, 0.35);
+  --border-glass: rgba(255, 255, 255, 0.09);
+  --shadow-gold: 0 16px 50px rgba(223, 168, 79, 0.35);
+  --shadow-royal: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 40px rgba(223, 168, 79, 0.25);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-royal: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--txt-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #070409; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--gold-main), var(--rose-main)); border-radius: 999px; }
+
+/* ══ BACKGROUND CANVAS & DYNAMIC AURORA MESH ══ */
+#stardust-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.8;
+}
+.aurora-mesh {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 55% at 15% 15%, rgba(223, 168, 79, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 85% 25%, rgba(138, 31, 58, 0.20) 0%, transparent 65%),
+    radial-gradient(ellipse 65% 65% at 50% 85%, rgba(192, 132, 252, 0.12) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: auroraPulse 16s ease-in-out infinite alternate;
+}
+@keyframes auroraPulse {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  50% { transform: scale(1.09) rotate(3deg); opacity: 1; }
+  100% { transform: scale(0.95) rotate(-3deg); opacity: 0.85; }
+}
+
+/* ══ TYPOGRAPHY & GOLD METALLIC SHINES ══ */
+.serif { font-family: var(--font-serif); }
+.script { font-family: var(--font-script); }
+.royal { font-family: var(--font-royal); }
+
+.gold-shine {
+  background: var(--gold-metallic);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-shadow: 0 0 35px rgba(223, 168, 79, 0.45);
+}
+.rose-shine {
+  background: linear-gradient(135deg, #fff0f3 0%, var(--rose-main) 50%, var(--rose-deep) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ══ LUXURY NAVIGATION BAR (FAQAT MENYU VA SAVATDA KO'RINADI) ══ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 80px;
+  background: rgba(6, 4, 8, 0.85);
+  backdrop-filter: blur(30px) saturate(180%);
+  border-bottom: 1px solid rgba(223, 168, 79, 0.22);
+  transition: all 0.4s ease;
+}
+nav.show-nav {
+  display: flex;
+  animation: navFadeDown 0.4s ease both;
+}
+@keyframes navFadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+nav.scrolled {
+  background: rgba(6, 4, 8, 0.96);
+  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.85);
+  border-bottom-color: var(--border-gold);
+}
+.nav-logo {
+  cursor: pointer; display: flex; align-items: center; line-height: 1;
+}
+.nav-brand-logo {
+  height: 54px; width: auto; max-width: 260px;
+  filter: drop-shadow(0 2px 10px rgba(223, 168, 79, 0.45));
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+.nav-logo:hover .nav-brand-logo {
+  transform: scale(1.03);
+  filter: drop-shadow(0 4px 20px rgba(223, 168, 79, 0.7));
+}
+
+/* ── LUXURY ACTION BUTTONS CONTAINER ── */
+.nav-actions {
+  display: flex; align-items: center; gap: 10px;
+}
+
+/* Base Jewelry Button Style */
+.nav-btn {
+  height: 44px;
+  background: linear-gradient(145deg, rgba(32, 22, 42, 0.65) 0%, rgba(14, 9, 20, 0.85) 100%);
+  border: 1px solid rgba(247, 213, 148, 0.25);
+  border-radius: 999px;
+  padding: 0 20px;
+  font-size: 0.86rem; font-weight: 700; letter-spacing: 0.6px;
+  color: #fff; cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 18px rgba(0, 0, 0, 0.5);
+  position: relative; overflow: hidden;
+}
+.nav-btn::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-25deg); transition: left 0.6s ease; pointer-events: none;
+}
+.nav-btn:hover::before { left: 180%; }
+.nav-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-main);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 8px 25px rgba(223, 168, 79, 0.35);
+  color: var(--gold-light);
+}
+
+/* 1. Ofitsiant Chaqirish Tugmasi */
+.nav-btn.waiter-btn {
+  background: linear-gradient(145deg, rgba(46, 20, 32, 0.7) 0%, rgba(18, 8, 14, 0.9) 100%);
+  border: 1px solid rgba(232, 123, 150, 0.45);
+  color: #ffe6ed;
+}
+.nav-btn.waiter-btn .btn-ico {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 6px rgba(232, 123, 150, 0.7));
+  animation: bellWiggle 3.5s ease-in-out infinite;
+}
+@keyframes bellWiggle {
+  0%, 90%, 100% { transform: rotate(0); }
+  92% { transform: rotate(-14deg); }
+  94% { transform: rotate(14deg); }
+  96% { transform: rotate(-10deg); }
+  98% { transform: rotate(8deg); }
+}
+.nav-btn.waiter-btn:hover {
+  border-color: var(--rose-main);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 8px 30px rgba(232, 123, 150, 0.45);
+  color: #fff;
+}
+
+/* 2. Musiqa Tugmasi (Mini Equalizer bilan) */
+.nav-btn.music-btn {
+  width: 44px; height: 44px; padding: 0; justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(35, 25, 48, 0.8) 0%, rgba(12, 8, 18, 0.95) 100%);
+  border: 1px solid rgba(223, 168, 79, 0.3);
+}
+.music-equalizer {
+  display: flex; align-items: flex-end; gap: 2.5px; height: 16px;
+}
+.music-bar {
+  width: 2.5px; background: var(--gold-light); border-radius: 999px;
+  height: 4px; transition: height 0.2s;
+}
+.music-btn.playing .music-bar:nth-child(1) { animation: eqBar 0.8s ease-in-out infinite alternate; }
+.music-btn.playing .music-bar:nth-child(2) { animation: eqBar 1.2s 0.2s ease-in-out infinite alternate; }
+.music-btn.playing .music-bar:nth-child(3) { animation: eqBar 0.9s 0.4s ease-in-out infinite alternate; }
+@keyframes eqBar {
+  0% { height: 4px; }
+  100% { height: 16px; background: var(--rose-main); }
+}
+.music-btn.playing {
+  border-color: var(--gold-main);
+  box-shadow: 0 0 25px rgba(223, 168, 79, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* 3. Menyu Tugmasi */
+.nav-btn.menu-nav-btn {
+  border: 1px solid rgba(223, 168, 79, 0.4);
+}
+.nav-btn.menu-nav-btn .btn-ico {
+  font-size: 1.15rem;
+  filter: drop-shadow(0 0 8px rgba(223, 168, 79, 0.5));
+}
+
+/* 4. Savatcha Tugmasi (Royal Velvet & Gold Pill) */
+.nav-btn.cart-nav-btn {
+  background: linear-gradient(135deg, #a62043 0%, #db5e7e 55%, #eb7c97 100%);
+  border: 1px solid rgba(255, 219, 228, 0.5);
+  color: #ffffff;
+  padding: 0 24px 0 20px;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.45), 0 6px 26px rgba(219, 94, 126, 0.5);
+}
+.nav-btn.cart-nav-btn .btn-ico {
+  font-size: 1.15rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+.nav-btn.cart-nav-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 10px 35px rgba(219, 94, 126, 0.7);
+  color: #fff;
+}
+.cart-num-badge {
+  position: absolute; top: -5px; right: -5px;
+  background: linear-gradient(135deg, #fff7de 0%, var(--gold-main) 100%);
+  color: #1a0a00;
+  font-size: 0.68rem; font-weight: 900;
+  width: 21px; height: 21px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #08050b;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* ══ SPA PAGES ══ */
+.page { display: none; position: relative; z-index: 2; min-height: 100vh; }
+.page.active { display: block; animation: pageFadeIn 0.5s ease both; }
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   HERO: 3D LUXURY GOLDEN QR STAND (KO'RGAN ODAM LOL QOLADIGAN STEND)
+══════════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 125px 24px 60px;
+  position: relative;
+}
+.hero-crown {
+  margin-bottom: 16px;
+  animation: crownFloat 3.8s ease-in-out infinite alternate;
+}
+.hero-crest-img {
+  width: 95px; height: 95px;
+  filter: drop-shadow(0 0 35px rgba(223, 168, 79, 0.7));
+}
+@keyframes crownFloat { to { transform: translateY(-10px) scale(1.05); } }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(223, 168, 79, 0.12);
+  border: 1px solid var(--border-gold);
+  border-radius: 999px; padding: 8px 24px;
+  font-family: var(--font-royal);
+  font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-light); font-weight: 700; margin-bottom: 20px;
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.4rem, 8.5vw, 7.2rem);
+  font-weight: 700; line-height: 1.05; margin-bottom: 14px;
+}
+.hero-subtitle {
+  max-width: 600px; font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--txt-sub); line-height: 1.75; margin-bottom: 45px;
+}
+
+/* ── 3D HAUTE PÂTISSERIE GOLD STAND (MARKAZIY QR STEND) ── */
+.table-stand-container {
+  width: 100%; max-width: 500px;
+  position: relative; margin: 0 auto 50px;
+  perspective: 1200px;
+}
+.gold-stand-card {
+  background: linear-gradient(165deg, #2a1b38 0%, #130a1c 55%, #07040a 100%);
+  border: 2px solid var(--gold-main);
+  border-radius: 38px; padding: 38px 30px 32px;
+  box-shadow: var(--shadow-royal);
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(24px);
+  transform: rotateX(4deg);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s;
+}
+.gold-stand-card::before {
+  content: ''; position: absolute; inset: -2px; border-radius: 40px;
+  background: conic-gradient(from 0deg, transparent, var(--gold-main), var(--rose-main), transparent 75%);
+  z-index: -1; animation: rotateBorder 8s linear infinite;
+}
+@keyframes rotateBorder { to { transform: rotate(360deg); } }
+
+.gold-stand-card:hover {
+  transform: rotateX(0deg) translateY(-10px);
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.98), 0 0 60px rgba(223, 168, 79, 0.6);
+}
+
+.stand-top-plate {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 18px; margin-bottom: 24px;
+  border-bottom: 1px solid rgba(223, 168, 79, 0.3);
+}
+.stand-stol-badge {
+  background: var(--gold-metallic);
+  color: #000; font-family: var(--font-royal);
+  font-weight: 800; font-size: 0.88rem; letter-spacing: 2px;
+  padding: 7px 18px; border-radius: 999px; text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(223, 168, 79, 0.4);
+}
+.stand-restaurant-name {
+  font-family: var(--font-script); font-size: 2rem;
+  color: var(--gold-light);
+}
+
+/* REAL QR CODE DISPLAY WITH NEON LASER SCANNER */
+.qr-display-box {
+  background: #ffffff;
+  border-radius: 28px; padding: 22px;
+  width: 250px; height: 250px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(223, 168, 79, 0.4);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+}
+.qr-display-box:hover {
+  transform: scale(1.04);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 55px rgba(223, 168, 79, 0.65);
+}
+#real-qr-canvas {
+  display: flex; align-items: center; justify-content: center;
+}
+#real-qr-canvas img, #real-qr-canvas canvas {
+  width: 206px !important; height: 206px !important;
+  border-radius: 14px;
+}
+
+.qr-laser-scanner {
+  position: absolute; left: 14px; right: 14px; height: 4px;
+  background: linear-gradient(90deg, transparent, var(--rose-main), #fff, var(--rose-main), transparent);
+  box-shadow: 0 0 22px var(--rose-main);
+  border-radius: 999px; pointer-events: none;
+  animation: scanLaserAnim 2.5s ease-in-out infinite alternate;
+}
+@keyframes scanLaserAnim {
+  0% { top: 14px; opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { top: 232px; opacity: 0.7; }
+}
+
+.stand-instructions {
+  font-size: 0.92rem; color: var(--txt-sub); line-height: 1.6; margin: 18px 0 20px;
+}
+.stand-instructions strong { color: var(--gold-light); font-weight: 700; }
+
+/* QR Qulf Holati & Status Badges */
+.qr-lock-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px;
+  margin-bottom: 18px; transition: all 0.3s;
+}
+.qr-lock-status.locked {
+  background: rgba(232, 50, 70, 0.16);
+  border: 1px solid rgba(232, 123, 150, 0.5);
+  color: #ff9fb2;
+  box-shadow: 0 0 20px rgba(232, 50, 70, 0.2);
+}
+.qr-lock-status.unlocked {
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Skanerlash Qutisi va Jarayon Animatsiyasi */
+.qr-scanning-layer {
+  position: absolute; inset: 0; background: rgba(10, 5, 15, 0.88);
+  border-radius: 26px; display: none; flex-direction: column;
+  align-items: center; justify-content: center; z-index: 5;
+  backdrop-filter: blur(8px);
+}
+.qr-scanning-layer.active { display: flex; animation: fadeIn 0.2s ease; }
+.qr-scan-spinner {
+  width: 48px; height: 48px; border: 3px solid rgba(223, 168, 79, 0.2);
+  border-top-color: var(--gold-main); border-radius: 50%;
+  animation: spin 0.8s linear infinite; margin-bottom: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Asosiy Skanerlash Tugmalari */
+.scan-btn-group {
+  display: flex; flex-direction: column; gap: 12px; margin-top: 18px;
+}
+.scan-action-btn {
+  width: 100%;
+  background: var(--gold-metallic);
+  color: #150a00; font-weight: 800; font-size: 1.02rem; letter-spacing: 0.4px;
+  padding: 17px 24px; border: none; border-radius: 999px;
+  cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  box-shadow: 0 10px 35px rgba(223, 168, 79, 0.45);
+}
+.scan-action-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 50px rgba(223, 168, 79, 0.7);
+}
+.scan-secondary-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-light); font-weight: 700; font-size: 0.9rem;
+  padding: 14px 22px; border-radius: 999px;
+  cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.scan-secondary-btn:hover {
+  background: rgba(223, 168, 79, 0.16);
+  transform: translateY(-2px);
+  border-color: var(--gold-light);
+}
+
+/* Sayt Havolasi (URL) Sozlash Paneli */
+.qr-url-card {
+  margin-top: 18px; padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(223, 168, 79, 0.25);
+  border-radius: 20px; text-align: left;
+}
+.qr-url-title {
+  font-size: 0.76rem; font-weight: 700; color: var(--gold-light);
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.qr-url-input-row {
+  display: flex; gap: 8px; margin-top: 6px;
+}
+.qr-url-input {
+  flex: 1; background: rgba(20, 14, 26, 0.9); border: 1px solid var(--border-gold);
+  border-radius: 999px; padding: 8px 16px; font-size: 0.82rem; color: #fff; outline: none;
+}
+.qr-url-input:focus {
+  border-color: var(--gold-light); box-shadow: 0 0 12px rgba(223, 168, 79, 0.4);
+}
+.qr-url-save-btn {
+  background: var(--gold-metallic); border: none; border-radius: 999px;
+  padding: 8px 16px; font-weight: 800; font-size: 0.78rem; color: #000; cursor: pointer;
+  transition: all 0.2s;
+}
+.qr-url-save-btn:hover { transform: scale(1.05); }
+
+/* 1-12 Table Selector Chips */
+.stol-chips-bar {
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+.scb-title {
+  font-family: var(--font-royal);
+  font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--txt-muted); margin-bottom: 12px; display: flex; justify-content: space-between;
+}
+.scb-chips {
+  display: flex; gap: 9px; overflow-x: auto; padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.scb-chips::-webkit-scrollbar { display: none; }
+.scb-chip {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 13px;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-glass);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; color: var(--txt-sub);
+  cursor: pointer; transition: all 0.25s;
+}
+.scb-chip:hover, .scb-chip.active {
+  background: var(--gold-main); color: #000;
+  border-color: var(--gold-light); transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(223, 168, 79, 0.45);
+}
+
+/* Qulflangan Menyu Ogohlantirish Modali */
+.locked-modal-overlay {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.locked-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+.locked-modal-card {
+  background: linear-gradient(165deg, #2b1836 0%, #12091c 60%, #08030e 100%);
+  border: 2px solid var(--rose-main);
+  border-radius: 36px; padding: 40px 32px;
+  max-width: 480px; width: 100%; text-align: center;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(232, 123, 150, 0.35);
+  animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ADMIN PANEL STYLES
+══════════════════════════════════════════════════════════════════ */
+.admin-page {
+  padding: 105px 24px 80px; max-width: 1200px; margin: 0 auto;
+}
+.admin-header {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; margin-bottom: 30px;
+}
+.admin-stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px; margin-bottom: 30px;
+}
+.admin-stat-card {
+  background: var(--bg-card); border: 1px solid var(--border-gold);
+  border-radius: 24px; padding: 22px; position: relative; overflow: hidden;
+}
+.admin-stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: var(--gold-metallic);
+}
+.stat-title { font-size: 0.8rem; color: var(--txt-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px; }
+.stat-val { font-size: 2rem; font-weight: 800; color: #fff; font-family: var(--font-serif); }
+.stat-sub { font-size: 0.76rem; color: var(--gold-light); margin-top: 4px; }
+
+.admin-tabs {
+  display: flex; gap: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none;
+}
+.admin-tab {
+  background: transparent; border: none; color: var(--txt-sub);
+  padding: 10px 20px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+  border-radius: 999px; transition: all 0.25s; white-space: nowrap;
+}
+.admin-tab.active {
+  background: var(--gold-metallic); color: #000;
+  box-shadow: 0 4px 18px rgba(223, 168, 79, 0.4);
+}
+
+.admin-section { display: none; }
+.admin-section.active { display: block; animation: pageFadeIn 0.3s ease; }
+
+.admin-table-wrap {
+  background: var(--bg-card); border: 1px solid var(--border-glass);
+  border-radius: 26px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.admin-table {
+  width: 100%; border-collapse: collapse; text-align: left;
+}
+.admin-table th {
+  background: rgba(255, 255, 255, 0.04); padding: 16px 20px;
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--gold-light); font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.admin-table td {
+  padding: 16px 20px; font-size: 0.88rem; color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); vertical-align: middle;
+}
+.admin-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.status-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 999px; font-size: 0.74rem; font-weight: 800;
+}
+.status-new { background: rgba(232, 123, 150, 0.2); color: #ff9fb2; border: 1px solid rgba(232, 123, 150, 0.4); }
+.status-cooking { background: rgba(223, 168, 79, 0.2); color: #f7d594; border: 1px solid rgba(223, 168, 79, 0.4); }
+.status-done { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+.admin-action-btn {
+  padding: 6px 14px; border-radius: 999px; font-size: 0.76rem; font-weight: 700;
+  cursor: pointer; border: none; transition: all 0.2s;
+}
+.btn-edit { background: rgba(223, 168, 79, 0.2); color: var(--gold-light); border: 1px solid var(--gold-main); }
+.btn-edit:hover { background: var(--gold-main); color: #000; }
+.btn-del { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
+.btn-del:hover { background: #ef4444; color: #fff; }
+
+.admin-modal-overlay {
+  position: fixed; inset: 0; z-index: 3500;
+  background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(18px);
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.admin-modal-overlay.active { display: flex; animation: fadeIn 0.25s ease; }
+.admin-modal-box {
+  background: linear-gradient(165deg, #241432 0%, #12091c 60%, #08030e 100%);
+  border: 1px solid var(--border-gold); border-radius: 32px;
+  padding: 34px 28px; max-width: 540px; width: 100%; max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.9);
+}
+.form-group { margin-bottom: 16px; text-align: left; }
+.form-label { display: block; font-size: 0.78rem; color: var(--gold-light); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; background: rgba(20, 14, 26, 0.88); border: 1px solid var(--border-gold);
+  border-radius: 14px; padding: 12px 16px; font-size: 0.9rem; color: #fff; outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--gold-light); box-shadow: 0 0 15px rgba(223, 168, 79, 0.35);
+}
+.form-textarea { resize: vertical; min-height: 80px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   LIVE CAMERA QR SCANNER OVERLAY
+══════════════════════════════════════════════════════════════════ */
+.scanner-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: #000;
+  display: none; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 40px 24px;
+}
+.scanner-overlay.active { display: flex; animation: fadeIn 0.35s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.scan-top-bar {
+  width: 100%; max-width: 500px;
+  display: flex; align-items: center; justify-content: space-between; z-index: 10;
+}
+.scan-close-btn {
+  background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff; width: 46px; height: 46px; border-radius: 50%;
+  font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.scan-close-btn:hover { background: rgba(232, 123, 150, 0.45); transform: scale(1.1); }
+
+.scan-target-box {
+  position: relative; width: min(330px, 82vw); height: min(330px, 82vw);
+  border-radius: 34px; overflow: hidden;
+  box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.75);
+  display: flex; align-items: center; justify-content: center;
+}
+#scanner-video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+#scan-hidden-canvas { display: none; }
+
+.scan-reticle {
+  position: absolute; inset: 0; pointer-events: none; border-radius: 34px;
+  border: 2px dashed rgba(223, 168, 79, 0.5);
+}
+.scan-corner {
+  position: absolute; width: 38px; height: 38px; border-color: var(--gold-main);
+  border-style: solid; border-width: 0; pointer-events: none;
+}
+.scan-corner.tl { top: 0; left: 0; border-top-width: 4px; border-left-width: 4px; border-top-left-radius: 22px; }
+.scan-corner.tr { top: 0; right: 0; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 22px; }
+.scan-corner.bl { bottom: 0; left: 0; border-bottom-width: 4px; border-left-width: 4px; border-bottom-left-radius: 22px; }
+.scan-corner.br { bottom: 0; right: 0; border-bottom-width: 4px; border-right-width: 4px; border-bottom-right-radius: 22px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   LIVE AR CAMERA: SEE REAL DESSERT PHOTO ON TABLE (WOW FEATURE!)
+══════════════════════════════════════════════════════════════════ */
+.ar-overlay {
+  position: fixed; inset: 0; z-index: 2500;
+  background: #000; display: none; flex-direction: column;
+}
+.ar-overlay.active { display: flex; }
+#ar-video {
+  width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;
+}
+.ar-hud-top {
+  position: relative; z-index: 10; padding: 24px 30px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0,0,0,0.88) 0%, transparent 100%);
+}
+.ar-hud-bottom {
+  position: relative; z-index: 10; margin-top: auto; padding: 26px 30px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.75) 70%, transparent 100%);
+}
+
+.ar-table-stage {
+  position: absolute; inset: 0; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1000px;
+}
+.ar-plate-3d {
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(223,168,79,0.35) 65%, rgba(0,0,0,0.65) 100%);
+  border: 4px solid var(--gold-main);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 65px rgba(223, 168, 79, 0.55);
+  transform: rotateX(60deg);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; pointer-events: auto;
+  animation: plateFloatAnim 4s ease-in-out infinite;
+}
+@keyframes plateFloatAnim {
+  0%, 100% { transform: rotateX(60deg) translateY(0); }
+  50% { transform: rotateX(60deg) translateY(-16px); }
+}
+.ar-dessert-photo {
+  position: absolute; bottom: 55px; width: 230px; height: 230px;
+  border-radius: 50%; object-fit: cover;
+  border: 4px solid #fff;
+  filter: drop-shadow(0 25px 35px rgba(0,0,0,0.9));
+  transform: rotateX(-60deg);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MENU CATALOG WITH ULTRA HIGH-DEFINITION DESSERT PHOTOS
+══════════════════════════════════════════════════════════════════ */
+.menu-page {
+  padding: 110px 28px 100px; max-width: 1260px; margin: 0 auto;
+}
+.menu-header-bar {
+  text-align: center; margin-bottom: 38px;
+}
+.menu-table-banner {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(223, 168, 79, 0.12); border: 1px solid var(--border-gold);
+  padding: 8px 26px; border-radius: 999px; margin-bottom: 16px;
+}
+.mtb-stol {
+  color: var(--gold-light); font-weight: 800; font-size: 0.9rem; letter-spacing: 1.5px;
+}
+.mtb-change {
+  color: var(--rose-main); font-size: 0.78rem; text-decoration: underline; cursor: pointer;
+}
+
+.search-filter-box {
+  max-width: 540px; margin: 0 auto 30px; position: relative;
+}
+.search-input {
+  width: 100%; background: rgba(22, 16, 30, 0.88);
+  border: 1px solid var(--border-gold); border-radius: 999px;
+  padding: 16px 52px 16px 26px; font-size: 0.98rem; color: #fff;
+  outline: none; backdrop-filter: blur(16px);
+  transition: all 0.3s;
+}
+.search-input:focus {
+  border-color: var(--gold-light); box-shadow: 0 0 28px rgba(223, 168, 79, 0.4);
+}
+.search-icon-btn {
+  position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+  color: var(--gold-main); font-size: 1.25rem; pointer-events: none;
+}
+
+/* Category Filter Pills */
+.category-pills {
+  display: flex; gap: 10px; overflow-x: auto; padding: 6px 4px 26px;
+  justify-content: flex-start; scrollbar-width: none;
+}
+@media (min-width: 800px) { .category-pills { justify-content: center; } }
+.category-pills::-webkit-scrollbar { display: none; }
+.cat-pill {
+  flex-shrink: 0; background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass); border-radius: 999px;
+  padding: 11px 24px; font-size: 0.88rem; font-weight: 700;
+  color: var(--txt-sub); cursor: pointer; transition: all 0.3s;
+}
+.cat-pill.active {
+  background: var(--gold-metallic);
+  color: #000; border-color: transparent;
+  box-shadow: 0 4px 22px rgba(223, 168, 79, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Real High-Definition Photo Dessert Cards */
+.menu-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+}
+.dessert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 32px; overflow: hidden;
+  position: relative; transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column;
+}
+.dessert-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--border-gold);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9), var(--shadow-gold);
+}
+.dc-photo-box {
+  height: 230px; position: relative; overflow: hidden;
+  background: #0e0a14;
+}
+.dc-real-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dessert-card:hover .dc-real-img {
+  transform: scale(1.14);
+}
+.dc-photo-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(18,12,24,0.92) 100%);
+  pointer-events: none;
+}
+.dc-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: linear-gradient(135deg, var(--rose-deep), var(--rose-main));
+  color: #fff; font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px;
+  padding: 6px 14px; border-radius: 999px; text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.dc-ar-btn {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(0, 0, 0, 0.7); border: 1px solid var(--gold-main);
+  color: var(--gold-light); font-size: 0.72rem; font-weight: 700;
+  padding: 6px 14px; border-radius: 999px; cursor: pointer;
+  backdrop-filter: blur(8px); transition: all 0.3s;
+  display: flex; align-items: center; gap: 5px;
+}
+.dc-ar-btn:hover { background: var(--gold-main); color: #000; }
+
+.dc-body {
+  padding: 24px 26px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;
+}
+.dc-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.dc-tag {
+  font-size: 0.65rem; color: var(--gold-light); background: rgba(223, 168, 79, 0.12);
+  padding: 3px 8px; border-radius: 6px; font-weight: 600;
+}
+.dc-name {
+  font-family: var(--font-serif); font-size: 1.48rem; font-weight: 700;
+  margin-bottom: 8px; line-height: 1.25;
+}
+.dc-desc {
+  font-size: 0.82rem; color: var(--txt-muted); line-height: 1.6;
+  margin-bottom: 22px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.dc-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dc-price {
+  font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700;
+  color: var(--gold-light);
+}
+.dc-add-btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-deep), var(--rose-main));
+  border: none; color: #fff; font-size: 1.5rem; font-weight: 700;
+  cursor: pointer; transition: all 0.35s;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 18px rgba(232, 123, 150, 0.45);
+}
+.dc-add-btn:hover {
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 6px 28px rgba(232, 123, 150, 0.65);
+}
+.dc-add-btn.added {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: scale(1.05);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CART & ORDER SUMMARY
+══════════════════════════════════════════════════════════════════ */
+.cart-page {
+  padding: 115px 24px 80px; max-width: 660px; margin: 0 auto;
+}
+.cart-card-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: 38px; padding: 38px 34px;
+  box-shadow: var(--shadow-royal);
+}
+.cart-item-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.cir-thumb {
+  width: 65px; height: 65px; border-radius: 18px; object-fit: cover;
+  border: 1px solid var(--border-gold);
+}
+.cir-info { flex: 1; }
+.cir-name { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
+.cir-price { color: var(--gold-light); font-size: 0.88rem; font-weight: 600; }
+.cir-ctrl { display: flex; align-items: center; gap: 10px; }
+.cir-btn {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass);
+  color: #fff; cursor: pointer; font-size: 1.15rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.cir-btn:hover { background: var(--gold-main); color: #000; }
+.cir-qty { font-weight: 800; font-size: 0.98rem; width: 22px; text-align: center; }
+
+.cart-total-box {
+  margin: 28px 0; padding: 24px;
+  background: rgba(0, 0, 0, 0.5); border-radius: 22px;
+  border: 1px solid var(--border-glass);
+}
+.ctb-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.92rem; color: var(--txt-sub); }
+.ctb-row.final {
+  margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.16);
+  font-size: 1.3rem; font-weight: 800; color: #fff;
+}
+.order-submit-btn {
+  width: 100%; background: var(--gold-metallic);
+  color: #000; font-weight: 800; font-size: 1.12rem; padding: 19px;
+  border: none; border-radius: 999px; cursor: pointer;
+  box-shadow: var(--shadow-gold); transition: all 0.35s;
+}
+.order-submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(223, 168, 79, 0.7); }
+
+/* ══ TOAST NOTIFICATION ══ */
+#toast-box {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(120px);
+  background: rgba(24, 15, 30, 0.96); border: 1px solid var(--gold-main);
+  border-radius: 999px; padding: 14px 32px; font-size: 0.94rem; font-weight: 700;
+  color: #fff; box-shadow: 0 10px 45px rgba(0, 0, 0, 0.85), var(--shadow-gold);
+  z-index: 9999; backdrop-filter: blur(20px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none; white-space: nowrap;
+}
+#toast-box.show { transform: translateX(-50%) translateY(0); }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  nav { padding: 0 14px; height: 72px; }
+  .nav-brand-logo { height: 42px; }
+  .nav-actions { gap: 6px; }
+  .nav-btn { height: 38px; padding: 0 13px; font-size: 0.78rem; gap: 5px; }
+  .nav-btn.music-btn { width: 38px; height: 38px; }
+  .nav-btn.cart-nav-btn { padding: 0 16px 0 13px; }
+  .hero-title { font-size: 3.1rem; }
+  .gold-stand-card { padding: 28px 18px 24px; }
+  .qr-display-box { width: 215px; height: 215px; }
+  #real-qr-canvas img, #real-qr-canvas canvas { width: 175px !important; height: 175px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cosmic Ambient Mesh & Stardust -->
+<div class="aurora-mesh"></div>
+<canvas id="stardust-canvas"></canvas>
+
+<!-- Toast Box -->
+<div id="toast-box">✨ Muvaffaqiyatli!</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     TOP LUXURY NAVIGATION
+══════════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="openPage('home')">
+    <img src="logo.svg" class="nav-brand-logo" alt="Safia Haute Pâtisserie">
+  </div>
+  <div class="nav-actions">
+    <!-- 1. Menyu Sahifasi -->
+    <button class="nav-btn menu-nav-btn" onclick="openPage('menu')">
+      <span class="btn-ico">🍰</span>
+      <span>Menyu</span>
+    </button>
+    
+    <!-- 2. Savatcha -->
+    <button class="nav-btn cart-nav-btn" onclick="openPage('cart')">
+      <span class="btn-ico">🛒</span>
+      <span>Savat</span>
+      <span class="cart-num-badge" id="cart-nav-badge" style="display:none">0</span>
+    </button>
+
+    <!-- 3. Menyuni Yopish / Chiqish -->
+    <button class="nav-btn waiter-btn" style="border-color:rgba(223,168,79,0.35); color:var(--gold-light);" onclick="lockAndExitMenu()" title="Menyuni qulflash va stendga qaytish">
+      <span>🔒 Chiqish</span>
+    </button>
+
+    <!-- 4. Admin Panel -->
+    <button class="nav-btn" style="border-color:var(--gold-main); color:var(--gold-light); background:rgba(223,168,79,0.15);" onclick="openAdminModal()" title="Admin Boshqaruv Paneli">
+      <span>⚙️ Admin</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     1. HOME PAGE: REAL 3D GOLDEN QR TABLE STAND
+══════════════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-crown">
+      <img src="logo-icon.svg" class="hero-crest-img" alt="Safia Royal Crest">
+    </div>
+
+    <div class="hero-eyebrow">
+      HAUTE PÂTISSERIE • EKSKLYUZIV QANDOLAT UYI
+    </div>
+
+    <h1 class="hero-title">
+      <span class="gold-shine">Safia Haute</span><br>
+      <span class="rose-shine serif" style="font-style: italic; font-weight: 400;">Pâtisserie</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Xush kelibsiz! Menyuni ochish uchun quyidagi QR kodni skaner qiling. QR kod skaner qilinmasa menyu ochilmaydi.
+    </p>
+
+    <!-- ── 3D GOLDEN RESTAURANT TABLE STAND (MARKAZDAGI QR STEND) ── -->
+    <div class="table-stand-container">
+      <div class="gold-stand-card">
+        
+        <div class="stand-top-plate">
+          <span class="stand-stol-badge" id="stand-stol-title">STOL #1</span>
+          <span class="stand-restaurant-name">
+            <img src="logo-icon.svg" style="width:28px; height:28px; vertical-align:middle; margin-right:6px;" alt="">Safia Cafe
+          </span>
+        </div>
+
+        <!-- QR LOCK STATUS BADGE -->
+        <div id="qr-lock-status-badge" class="qr-lock-status locked">
+          <span id="qr-lock-icon">🔒</span> <span id="qr-lock-text">Menyu yopiq • QR kodni skanerlang</span>
+        </div>
+
+        <!-- REAL QR CODE (SKANER QILISH UCHUN BOSING YOKI TELEFONDA SKANERLANG) -->
+        <div class="qr-display-box" id="main-qr-box" onclick="scanStandQR()" title="Skanerlash uchun bosing yoki kamerada skanerlang" style="cursor:pointer; position:relative;">
+          <div id="real-qr-canvas"></div>
+          <div class="qr-laser-scanner" id="qr-laser-line"></div>
+          
+          <!-- SCANNING OVERLAY LAYER -->
+          <div class="qr-scanning-layer" id="qr-scanning-layer">
+            <div class="qr-scan-spinner"></div>
+            <div style="font-weight:700; color:var(--gold-light); font-size:0.9rem;">QR Skanerlanmoqda...</div>
+            <div style="font-size:0.75rem; color:var(--txt-sub); margin-top:4px;">Stol menyusi yuklanmoqda</div>
+          </div>
+        </div>
+
+        <!-- TELEFONDA SKANERLANGANDA OCHILADIGAN HAVOLA -->
+        <div style="margin-top:14px; font-size:0.78rem; color:var(--txt-sub); line-height:1.5;">
+          📲 <strong style="color:#fff;">Telefon bilan skaner qilganda ochiladi:</strong><br>
+          <span id="qr-current-url-display" style="color:var(--gold-light); font-weight:700; word-break:break-all;"></span>
+        </div>
+
+        <div class="stand-instructions">
+          Telefoningiz kamerasi orqali QR kodni skaner qiling yoki quyidagi tugmalar orqali menyuni oching:
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="scan-btn-group">
+          <!-- 1. Ekrandagi QR kodni skanerlash va darhol menyuni ochish -->
+          <button class="scan-action-btn" onclick="scanStandQR()" style="font-size:1.08rem; padding:18px 24px;">
+            <span>⚡</span> <span>QR Kodni Skanerlash va Menyuni Ochish</span>
+          </button>
+          
+          <!-- 2. Jonli Kamera bilan skanerlash -->
+          <button class="scan-secondary-btn" onclick="openLiveCameraScanner()">
+            <span>📸</span> <span>Kamera orqali skanerlash</span>
+          </button>
+
+          <!-- 3. QR Kodni rasm qilib saqlash (PNG) -->
+          <button class="scan-secondary-btn" onclick="downloadQRCodePNG()">
+            <span>📥</span> <span>QR Kod Rasmini Yuklab Olish (PNG)</span>
+          </button>
+
+          <!-- 4. Alohida to'liq QR Kod sahifasini ochish -->
+          <button class="scan-secondary-btn" style="border-color:rgba(232,123,150,0.5); color:#ffe6ed;" onclick="window.open('qr-kod.html', '_blank')">
+            <span>🏷️</span> <span>Alohida QR Kod Kartochkasini Ochish</span>
+          </button>
+
+          <!-- 5. Admin Paneliga Kirish -->
+          <button class="scan-secondary-btn" style="border-color:rgba(223,168,79,0.5); color:var(--gold-light);" onclick="openAdminModal()">
+            <span>⚙️</span> <span>Restoran Admin Paneli (Buyurtmalar & Menyu)</span>
+          </button>
+        </div>
+
+        <!-- Stol tanlash chipslari -->
+        <div class="stol-chips-bar">
+          <div class="scb-title">
+            <span>Stol raqamini tanlang:</span>
+            <span style="color:var(--gold-light)" id="scb-selected-text">Stol #1</span>
+          </div>
+          <div class="scb-chips" id="stol-selector-chips"></div>
+        </div>
+
+        <!-- QR KOD UCHUN SAYT HAVOLASINI SOZLASH -->
+        <div class="qr-url-card">
+          <div class="qr-url-title">
+            <span>🌐 QR Kod Ochadigan Sayt Havolasi</span>
+            <span style="cursor:pointer; font-size:0.75rem; text-decoration:underline; color:var(--rose-main);" onclick="resetSiteUrl()">Asliga qaytarish</span>
+          </div>
+          <div class="qr-url-input-row">
+            <input type="text" id="custom-site-url-input" class="qr-url-input" placeholder="http://192.168.1.23:8080/safiya-cafe.html yoki sayt domeni">
+            <button class="qr-url-save-btn" onclick="saveCustomSiteUrl()">Saqlash</button>
+          </div>
+          <p style="font-size:0.72rem; color:var(--txt-muted); margin-top:6px;">
+            💡 Telefon orqali skaner qilganda sayt ochilishi uchun sayt manzilingizni shu yerga yozing.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     2. LIVE CAMERA QR SCANNER OVERLAY
+══════════════════════════════════════════════════════════════════ -->
+<div class="scanner-overlay" id="scanner-overlay">
+  <div class="scan-top-bar">
+    <button class="scan-close-btn" onclick="closeLiveCameraScanner()">✕</button>
+    <div style="font-weight:700; color:var(--gold-light); font-size:1.15rem; font-family:var(--font-royal)">✦ QR SKANER ✦</div>
+    <div style="width:46px"></div>
+  </div>
+
+  <div class="scan-target-box">
+    <video id="scanner-video" playsinline autoplay muted></video>
+    <canvas id="scan-hidden-canvas"></canvas>
+    
+    <div class="scan-reticle">
+      <div class="scan-corner tl"></div>
+      <div class="scan-corner tr"></div>
+      <div class="scan-corner bl"></div>
+      <div class="scan-corner br"></div>
+      <div class="qr-laser-scanner" style="top:10%"></div>
+    </div>
+  </div>
+
+  <div style="width:100%; max-width:500px; text-align:center;">
+    <p style="font-size:0.95rem; color:var(--txt-sub); margin-bottom:16px;">
+      Kamerani stoldagi QR kodga qarating... Skanerlanganda menyu avtomatik ochiladi.
+    </p>
+    <button class="scan-action-btn" style="padding:15px 28px;" onclick="closeLiveCameraScanner(); verifyQRSuccess(currentStol, 'Kamera orqali QR kod skanerlandi!');">
+      ⚡ Stol #<span id="cam-active-stol">1</span> QR Kodini Tasdiqlash
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     3. LIVE AR: SEE REAL PHOTO OF DESSERT ON TABLE
+══════════════════════════════════════════════════════════════════ -->
+<div class="ar-overlay" id="ar-overlay">
+  <video id="ar-video" playsinline autoplay muted></video>
+  
+  <div class="ar-hud-top">
+    <div style="color:var(--gold-light); font-weight:800; font-size:1.15rem; font-family:var(--font-royal);">
+      🍽️ STOL USTIDA AR KO'RINISH
+    </div>
+    <button class="scan-close-btn" onclick="closeAR()">✕</button>
+  </div>
+
+  <div class="ar-table-stage">
+    <div class="ar-plate-3d">
+      <img id="ar-dessert-img" class="ar-dessert-photo" src="" alt="AR Dessert">
+    </div>
+  </div>
+
+  <div class="ar-hud-bottom">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <div>
+        <h3 id="ar-dessert-name" style="font-size:1.35rem; font-weight:700; color:#fff;">Dessert</h3>
+        <p id="ar-dessert-price" style="color:var(--gold-light); font-weight:700; font-size:1.2rem;">0 so'm</p>
+      </div>
+      <button class="open-menu-direct-btn" style="width:auto; padding:14px 28px;" onclick="addCurrentARToCart()">
+        🛒 Savatga qo'shish
+      </button>
+    </div>
+    <p style="font-size:0.78rem; color:var(--txt-muted); text-align:center;">
+      Kamerani stol yuzasiga qarating — haqiqiy shirinlik tarelkada stolingiz ustida ko'rinadi!
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     4. MENU CATALOG PAGE WITH REAL HIGH DEFINITION DESSERT PHOTOS
+══════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-menu">
+  <div class="menu-page">
+    <div class="menu-header-bar">
+      <div class="menu-table-banner">
+        <span style="font-size:1.25rem">🟢</span>
+        <span class="mtb-stol" id="menu-active-stol">STOL #1 • QR SKANER TASDIQLANDI</span>
+        <span class="mtb-change" onclick="lockAndExitMenu()">[🔒 Menyuni Yopish / Chiqish]</span>
+      </div>
+      <h2 class="serif gold-shine" style="font-size: clamp(2.6rem, 5.5vw, 4.4rem); font-weight:700;">
+        Eksklyuziv Shirinliklar
+      </h2>
+      <p style="color:var(--txt-sub); font-size:0.98rem; margin-top:8px;">
+        Faqat oliy toifadagi Belgiya shokoladi, yangi rezavorlar va usta qandolatchilar siri.
+      </p>
+    </div>
+
+    <!-- Search Box -->
+    <div class="search-filter-box">
+      <input type="text" class="search-input" id="menu-search-input" placeholder="Shirinlik nomini qidiring (masalan: San Sebastian, Kruassan...)" oninput="filterMenuCards()">
+      <span class="search-icon-btn">🔍</span>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="category-pills" id="category-pills"></div>
+
+    <!-- Dessert Cards with Real High-Def Photos -->
+    <div class="menu-grid" id="menu-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     5. CART & ORDER PAGE
+══════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-cart">
+  <div class="cart-page">
+    <div class="cart-card-wrap">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h2 class="serif gold-shine" style="font-size:2.3rem; font-weight:700;">Savatchangiz</h2>
+        <span style="color:#10b981; font-weight:800; font-size:0.88rem;" id="cart-stol-badge">Stol #1</span>
+      </div>
+
+      <div id="cart-items-list"></div>
+
+      <div class="cart-total-box">
+        <div class="ctb-row">
+          <span>Buyurtma summasi:</span>
+          <span id="cart-subtotal">0 so'm</span>
+        </div>
+        <div class="ctb-row">
+          <span>Xizmat ko'rsatish:</span>
+          <span style="color:#10b981; font-weight:700;">0% (Mijozlarimiz uchun bepul)</span>
+        </div>
+        <div class="ctb-row final">
+          <span>Jami to'lov:</span>
+          <span style="color:var(--gold-light)" id="cart-total">0 so'm</span>
+        </div>
+      </div>
+
+      <button class="order-submit-btn" onclick="submitOrder()">
+        ✨ Buyurtmani Stolga Jo'natish
+      </button>
+      <button class="nav-btn" style="width:100%; justify-content:center; margin-top:14px; padding:15px;" onclick="openPage('menu')">
+        ← Yana shirinlik tanlash
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     6. ADMIN DASHBOARD PAGE
+══════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-page">
+    <div class="admin-header">
+      <div>
+        <div style="font-family:var(--font-royal); font-size:0.75rem; letter-spacing:3px; color:var(--gold-light);">BOSHQARUV PANELI</div>
+        <h2 class="serif gold-shine" style="font-size:2.6rem; font-weight:700;">Safia Admin Suite</h2>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="nav-btn" onclick="openPage('home')">← Stendga qaytish</button>
+        <button class="nav-btn" style="border-color:var(--rose-main); color:#ff9fb2;" onclick="adminLogout()">Chiqish</button>
+      </div>
+    </div>
+
+    <!-- Statistik kartochkalar -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card">
+        <div class="stat-title">Bugungi Buyurtmalar</div>
+        <div class="stat-val" id="adm-stat-count">0 ta</div>
+        <div class="stat-sub">Jami tushgan buyurtmalar</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Bugungi Tushum</div>
+        <div class="stat-val" id="adm-stat-revenue">0 so'm</div>
+        <div class="stat-sub">Kassa aylanmasi</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Menyudagi Mahsulotlar</div>
+        <div class="stat-val" id="adm-stat-items">12 ta</div>
+        <div class="stat-sub">Faol shirinliklar</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Faol Stollar</div>
+        <div class="stat-val" id="adm-stat-tables">12 ta</div>
+        <div class="stat-sub">QR kod bilan jihozlangan</div>
+      </div>
+    </div>
+
+    <!-- Admin Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('orders')">📋 Jonli Buyurtmalar (<span id="adm-badge-orders">0</span>)</button>
+      <button class="admin-tab" onclick="switchAdminTab('menu')">🍰 Menyuni Boshqarish</button>
+      <button class="admin-tab" onclick="switchAdminTab('tables')">🪑 Stollar & QR Kodlar</button>
+      <button class="admin-tab" onclick="switchAdminTab('settings')">⚙️ Sozlamalar & Parol</button>
+    </div>
+
+    <!-- 1. Jonli Buyurtmalar Bo'limi -->
+    <div class="admin-section active" id="adm-sec-orders">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Jonli Buyurtmalar Oqimi</h3>
+        <button class="admin-action-btn btn-del" onclick="clearAllOrders()">Barchasini tozalash</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Vaqt</th>
+              <th>Stol</th>
+              <th>Mahsulotlar</th>
+              <th>Jami Summa</th>
+              <th>Status</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="adm-orders-tbody">
+            <!-- JS orqali to'ldiriladi -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2. Menyu Tahrirlash Bo'limi -->
+    <div class="admin-section" id="adm-sec-menu">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Menyudagi Shirinliklar</h3>
+        <button class="scan-action-btn" style="width:auto; padding:10px 22px; font-size:0.88rem;" onclick="openAddDessertModal()">
+          + Yangi Shirinlik Qo'shish
+        </button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Rasm</th>
+              <th>Nomi</th>
+              <th>Kategoriya</th>
+              <th>Narxi</th>
+              <th>Belgi (Badge)</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="adm-menu-tbody">
+            <!-- JS orqali to'ldiriladi -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. Stollar & QR Kodlar Bo'limi -->
+    <div class="admin-section" id="adm-sec-tables">
+      <div style="margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Barcha 12 ta Stol QR Kodlari</h3>
+        <p style="font-size:0.85rem; color:var(--txt-muted);">Har bir stol uchun alohida QR kodni yuklab oling yoki chop eting.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:20px;" id="adm-tables-grid">
+        <!-- JS orqali to'ldiriladi -->
+      </div>
+    </div>
+
+    <!-- 4. Sozlamalar Bo'limi -->
+    <div class="admin-section" id="adm-sec-settings">
+      <div style="max-width:560px; background:var(--bg-card); border:1px solid var(--border-gold); border-radius:26px; padding:28px;">
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:18px;">Admin Parolini O'zgartirish</h3>
+        <div class="form-group">
+          <label class="form-label">Yangi Admin Paroli</label>
+          <input type="password" id="adm-new-pass" class="form-input" placeholder="Yangi parol kiriting">
+        </div>
+        <button class="scan-action-btn" style="width:auto; padding:12px 26px; font-size:0.9rem;" onclick="saveAdminPassword()">
+          Parolni Saqlash
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN MODALI -->
+<div class="admin-modal-overlay" id="adm-login-modal">
+  <div class="admin-modal-box" style="max-width:400px; text-align:center;">
+    <div style="font-size:3rem; margin-bottom:10px;">🔐</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.8rem; color:var(--gold-light); margin-bottom:6px;">Admin Kirish</h3>
+    <p style="font-size:0.85rem; color:var(--txt-muted); margin-bottom:20px;">Standart parol: <strong>admin123</strong></p>
+    <div class="form-group">
+      <input type="password" id="adm-login-pass" class="form-input" placeholder="Parolni kiriting..." onkeydown="if(event.key==='Enter') verifyAdminLogin()">
+    </div>
+    <div style="display:flex; gap:10px; margin-top:14px;">
+      <button class="scan-action-btn" onclick="verifyAdminLogin()">Kirish</button>
+      <button class="nav-btn" onclick="closeAdminModal()">Bekor qilish</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAHSULOT QO'SHISH / TAHRIRLASH MODALI -->
+<div class="admin-modal-overlay" id="adm-item-modal">
+  <div class="admin-modal-box">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <h3 style="font-size:1.4rem; font-weight:700; color:var(--gold-light);" id="adm-modal-title">Yangi Shirinlik</h3>
+      <button class="scan-close-btn" style="width:36px; height:36px; font-size:1rem;" onclick="closeItemModal()">✕</button>
+    </div>
+    <input type="hidden" id="adm-edit-id" value="">
+    <div class="form-group">
+      <label class="form-label">Shirinlik Nomi</label>
+      <input type="text" id="adm-input-name" class="form-input" placeholder="Masalan: Dubay Pistachio Kruassan">
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Kategoriya</label>
+        <select id="adm-input-cat" class="form-select">
+          <option value="Tortlar">Tortlar</option>
+          <option value="Chizkeyklar">Chizkeyklar</option>
+          <option value="Kruassanlar">Kruassanlar</option>
+          <option value="Sharqona">Sharqona</option>
+          <option value="Desertlar">Desertlar</option>
+          <option value="Ichimliklar">Ichimliklar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Narxi (so'mda)</label>
+        <input type="number" id="adm-input-price" class="form-input" placeholder="Masalan: 45000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Belgi (Badge)</label>
+      <input type="text" id="adm-input-badge" class="form-input" placeholder="Masalan: 🌟 Best-seller yoki 🔥 Trend">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Rasm Havolasi (URL)</label>
+      <input type="text" id="adm-input-img" class="form-input" placeholder="https://images.unsplash.com/...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tavsif (Retsept / Tarkib)</label>
+      <textarea id="adm-input-desc" class="form-textarea" placeholder="Shirinlik haqida qisqacha ma'lumot..."></textarea>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <button class="scan-action-btn" onclick="saveDessertItem()">Saqlash</button>
+      <button class="nav-btn" onclick="closeItemModal()">Bekor qilish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     QULFLANGAN MENYU OGOHLANTIRISH MODALI
+══════════════════════════════════════════════════════════════════ -->
+<div class="locked-modal-overlay" id="locked-modal-overlay">
+  <div class="locked-modal-card">
+    <div style="font-size:3.5rem; margin-bottom:12px; filter:drop-shadow(0 0 20px rgba(232,123,150,0.6));">🔒</div>
+    <h3 style="font-family:var(--font-serif); font-size:2.2rem; color:var(--gold-light); margin-bottom:10px;">
+      Menyu Qulflangan!
+    </h3>
+    <p style="color:var(--txt-sub); font-size:0.95rem; line-height:1.65; margin-bottom:26px;">
+      Hurmatli mehmon! Menyuni ko'rish va buyurtma berish uchun, iltimos, avval stolingizdagi QR kodni skanerlang. <strong style="color:var(--rose-main);">QR kod skaner qilinmasa menyu ochilmaydi!</strong>
+    </p>
+    <div style="display:flex; flex-direction:column; gap:11px;">
+      <button class="scan-action-btn" onclick="closeLockedModal(); openLiveCameraScanner();">
+        <span>📸</span> <span>Kamera Bilan Skanerlash</span>
+      </button>
+      <button class="scan-secondary-btn" onclick="closeLockedModal(); scanStandQR();">
+        <span>⚡</span> <span>Stoldagi QR Kodni Skanerlash</span>
+      </button>
+      <button class="nav-btn" style="width:100%; justify-content:center; margin-top:6px; background:rgba(255,255,255,0.06);" onclick="closeLockedModal()">
+        Yopish
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     6. ADMIN DASHBOARD PAGE
+══════════════════════════════════════════════════════════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-page">
+    <div class="admin-header">
+      <div>
+        <div style="font-family:var(--font-royal); font-size:0.75rem; letter-spacing:3px; color:var(--gold-light);">BOSHQARUV PANELI</div>
+        <h2 class="serif gold-shine" style="font-size:2.6rem; font-weight:700;">Safia Admin Suite</h2>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="nav-btn" onclick="openPage('home')">← Stendga qaytish</button>
+        <button class="nav-btn" style="border-color:var(--rose-main); color:#ff9fb2;" onclick="adminLogout()">Chiqish</button>
+      </div>
+    </div>
+
+    <!-- Statistik kartochkalar -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card">
+        <div class="stat-title">Bugungi Buyurtmalar</div>
+        <div class="stat-val" id="adm-stat-count">0 ta</div>
+        <div class="stat-sub">Jami tushgan buyurtmalar</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Bugungi Tushum</div>
+        <div class="stat-val" id="adm-stat-revenue">0 so'm</div>
+        <div class="stat-sub">Kassa aylanmasi</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Menyudagi Mahsulotlar</div>
+        <div class="stat-val" id="adm-stat-items">12 ta</div>
+        <div class="stat-sub">Faol shirinliklar</div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="stat-title">Faol Stollar</div>
+        <div class="stat-val" id="adm-stat-tables">12 ta</div>
+        <div class="stat-sub">QR kod bilan jihozlangan</div>
+      </div>
+    </div>
+
+    <!-- Admin Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('orders')">📋 Jonli Buyurtmalar (<span id="adm-badge-orders">0</span>)</button>
+      <button class="admin-tab" onclick="switchAdminTab('menu')">🍰 Menyuni Boshqarish</button>
+      <button class="admin-tab" onclick="switchAdminTab('tables')">🪑 Stollar & QR Kodlar</button>
+      <button class="admin-tab" onclick="switchAdminTab('settings')">⚙️ Sozlamalar & Parol</button>
+    </div>
+
+    <!-- 1. Jonli Buyurtmalar Bo'limi -->
+    <div class="admin-section active" id="adm-sec-orders">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Jonli Buyurtmalar Oqimi</h3>
+        <button class="admin-action-btn btn-del" onclick="clearAllOrders()">Barchasini tozalash</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Vaqt</th>
+              <th>Stol</th>
+              <th>Mahsulotlar</th>
+              <th>Jami Summa</th>
+              <th>Status</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="adm-orders-tbody">
+            <!-- JS orqali to'ldiriladi -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2. Menyu Tahrirlash Bo'limi -->
+    <div class="admin-section" id="adm-sec-menu">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Menyudagi Shirinliklar</h3>
+        <button class="scan-action-btn" style="width:auto; padding:10px 22px; font-size:0.88rem;" onclick="openAddDessertModal()">
+          + Yangi Shirinlik Qo'shish
+        </button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Rasm</th>
+              <th>Nomi</th>
+              <th>Kategoriya</th>
+              <th>Narxi</th>
+              <th>Belgi (Badge)</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="adm-menu-tbody">
+            <!-- JS orqali to'ldiriladi -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. Stollar & QR Kodlar Bo'limi -->
+    <div class="admin-section" id="adm-sec-tables">
+      <div style="margin-bottom:16px;">
+        <h3 style="font-size:1.25rem; font-weight:700;">Barcha 12 ta Stol QR Kodlari</h3>
+        <p style="font-size:0.85rem; color:var(--txt-muted);">Har bir stol uchun alohida QR kodni yuklab oling yoki chop eting.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:20px;" id="adm-tables-grid">
+        <!-- JS orqali to'ldiriladi -->
+      </div>
+    </div>
+
+    <!-- 4. Sozlamalar Bo'limi -->
+    <div class="admin-section" id="adm-sec-settings">
+      <div style="max-width:560px; background:var(--bg-card); border:1px solid var(--border-gold); border-radius:26px; padding:28px;">
+        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:18px;">Admin Parolini O'zgartirish</h3>
+        <div class="form-group">
+          <label class="form-label">Yangi Admin Paroli</label>
+          <input type="password" id="adm-new-pass" class="form-input" placeholder="Yangi parol kiriting">
+        </div>
+        <button class="scan-action-btn" style="width:auto; padding:12px 26px; font-size:0.9rem;" onclick="saveAdminPassword()">
+          Parolni Saqlash
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN MODALI -->
+<div class="admin-modal-overlay" id="adm-login-modal">
+  <div class="admin-modal-box" style="max-width:400px; text-align:center;">
+    <div style="font-size:3rem; margin-bottom:10px;">🔐</div>
+    <h3 style="font-family:var(--font-serif); font-size:1.8rem; color:var(--gold-light); margin-bottom:6px;">Admin Kirish</h3>
+    <p style="font-size:0.85rem; color:var(--txt-muted); margin-bottom:20px;">Standart parol: <strong>admin123</strong></p>
+    <div class="form-group">
+      <input type="password" id="adm-login-pass" class="form-input" placeholder="Parolni kiriting..." onkeydown="if(event.key==='Enter') verifyAdminLogin()">
+    </div>
+    <div style="display:flex; gap:10px; margin-top:14px;">
+      <button class="scan-action-btn" onclick="verifyAdminLogin()">Kirish</button>
+      <button class="nav-btn" onclick="closeAdminModal()">Bekor qilish</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAHSULOT QO'SHISH / TAHRIRLASH MODALI -->
+<div class="admin-modal-overlay" id="adm-item-modal">
+  <div class="admin-modal-box">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <h3 style="font-size:1.4rem; font-weight:700; color:var(--gold-light);" id="adm-modal-title">Yangi Shirinlik</h3>
+      <button class="scan-close-btn" style="width:36px; height:36px; font-size:1rem;" onclick="closeItemModal()">✕</button>
+    </div>
+    <input type="hidden" id="adm-edit-id" value="">
+    <div class="form-group">
+      <label class="form-label">Shirinlik Nomi</label>
+      <input type="text" id="adm-input-name" class="form-input" placeholder="Masalan: Dubay Pistachio Kruassan">
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="form-group">
+        <label class="form-label">Kategoriya</label>
+        <select id="adm-input-cat" class="form-select">
+          <option value="Tortlar">Tortlar</option>
+          <option value="Chizkeyklar">Chizkeyklar</option>
+          <option value="Kruassanlar">Kruassanlar</option>
+          <option value="Sharqona">Sharqona</option>
+          <option value="Desertlar">Desertlar</option>
+          <option value="Ichimliklar">Ichimliklar</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Narxi (so'mda)</label>
+        <input type="number" id="adm-input-price" class="form-input" placeholder="Masalan: 45000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Belgi (Badge)</label>
+      <input type="text" id="adm-input-badge" class="form-input" placeholder="Masalan: 🌟 Best-seller yoki 🔥 Trend">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Rasm Havolasi (URL)</label>
+      <input type="text" id="adm-input-img" class="form-input" placeholder="https://images.unsplash.com/...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tavsif (Retsept / Tarkib)</label>
+      <textarea id="adm-input-desc" class="form-textarea" placeholder="Shirinlik haqida qisqacha ma'lumot..."></textarea>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <button class="scan-action-btn" onclick="saveDessertItem()">Saqlash</button>
+      <button class="nav-btn" onclick="closeItemModal()">Bekor qilish</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   DATABASE: REAL HIGH DEFINITION DESSERT PHOTOS (FAQAT SHIRINLIKLAR!)
+══════════════════════════════════════════════════════════════════ */
+const DESSERTS = [
+  {
+    id: 0,
+    name: "Safia Signature Shokolad Torti",
+    cat: "Tortlar",
+    price: 120000,
+    badge: "🌟 Best-seller",
+    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85",
+    tags: ["Belgiya shokoladi", "Oltin bezak", "Qulupnay"],
+    desc: "Usta qandolatchilarimizning shoh asari: 3 qavat qora Belçika shokoladi, tabiiy qulupnayli mousse va haqiqiy yeyiladigan tilla zarrachalari."
+  },
+  {
+    id: 1,
+    name: "San Sebastian Cheesecake",
+    cat: "Chizkeyklar",
+    price: 48000,
+    badge: "🔥 Mashhur",
+    img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85",
+    tags: ["Ispancha uslub", "Karamel qobiq", "Suyuq markaz"],
+    desc: "Basklar mamlakatining afsonaviy chizkeyki. Tashqi tomoni kuydirilgan karamel hidli, ichki qismi esa ipakdek nozik kremli pishloq."
+  },
+  {
+    id: 2,
+    name: "Red Velvet (Qizil Baxmal)",
+    cat: "Tortlar",
+    price: 52000,
+    badge: "❤️ Sevimli",
+    img: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=900&q=85",
+    tags: ["Filadelfiya krem", "Vanil", "Romantika"],
+    desc: "Klassik Nyu-York shirinligi: mayin baxmalsimon qizil biskvit qavatlari va original Filadelfiya pishlog'idan tayyorlangan havodor krem."
+  },
+  {
+    id: 3,
+    name: "Dubay Pistachio Kruassan",
+    cat: "Kruassanlar",
+    price: 38000,
+    badge: "✨ Trend 2026",
+    img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85",
+    tags: ["Pista kremi", "Kataifi", "72 qavat"],
+    desc: "Fransuzcha 72 qavatli qarsildoq sariyog'li kruassan, ichida quyuq pista pastasi va kataifi shirinlik xuruji bilan to'ldirilgan."
+  },
+  {
+    id: 4,
+    name: "Krem Brüle Royal",
+    cat: "Desertlar",
+    price: 35000,
+    badge: "🇫🇷 Parijcha",
+    img: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=85",
+    tags: ["Madagaskar vanil", "Qarsildoq karamel"],
+    desc: "Olov bilan qarsildoq qilib qovurilgan yaltiroq shakar qobig'i ostidagi Madagaskar vanili bilan boyitilgan nozik kremli desert."
+  },
+  {
+    id: 5,
+    name: "Fransuz Ekleri (Assorti)",
+    cat: "Kruassanlar",
+    price: 32000,
+    badge: "🌸 Nozik",
+    img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
+    tags: ["Choux xamiri", "Vanil diplomat", "Shokolad"],
+    desc: "Nozik choux xamiridan pishirilgan va yaltiroq glazur bilan qoplangan, ichi vanilli qaymoqli krem bilan to'la nafis fransuz ekleri."
+  },
+  {
+    id: 6,
+    name: "Turkcha Pista Baklavasi",
+    cat: "Sharqona",
+    price: 45000,
+    badge: "🌿 Antep pista",
+    img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=900&q=85",
+    tags: ["40 qavat filo", "Gaziantep", "Asal"],
+    desc: "40 qatlamli ipakdek yupqa filo xamiri, yangi Gaziantep yashil pistasi va tabiiy tog' asal siropi bilan quyilgan qarsildoq sharq shirinligi."
+  },
+  {
+    id: 7,
+    name: "Tiramisu Tradizionale",
+    cat: "Desertlar",
+    price: 42000,
+    badge: "🇮🇹 Rim",
+    img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85",
+    tags: ["Savoyardi", "Maskarpone", "Espresso"],
+    desc: "Haqiqiy italyan retsepti: qahvaga botirilgan Savoyardi pechenyelari, yangi Maskarpone pishlog'i va xushbo'y kakao kukuni."
+  },
+  {
+    id: 8,
+    name: "Malinali Qarsildoq Tartaletka",
+    cat: "Desertlar",
+    price: 36000,
+    badge: "🍓 Yangi meva",
+    img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85",
+    tags: ["Yangi malina", "Qarsildoq qum xamir"],
+    desc: "Qarsildoq qum xamiri savatchasi, ichida vanil kremi va ustida yangi uzilgan shirali malinalar terilgan nafis desert."
+  },
+  {
+    id: 9,
+    name: "Tropik Mango Panna Cotta",
+    cat: "Desertlar",
+    price: 34000,
+    badge: "☀️ Salqin",
+    img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
+    tags: ["Tropik mango", "Italyan qaymoq"],
+    desc: "Italyancha ipakdek silliq vanilli qaymoq va tepasida pishgan tropik mango pyuresi bilan yozgi salqin kayfiyat."
+  },
+  {
+    id: 10,
+    name: "Shokoladli Issiq Fondan",
+    cat: "Tortlar",
+    price: 46000,
+    badge: "🌋 Suyuq qalb",
+    img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85",
+    tags: ["Issiq shokolad", "Muzqaymoq bilan"],
+    desc: "Kesilganda ichidan qaynoq quyuq shokolad oqib chiqadigan mashhur fransuz pirogi, yonida vanil muzqaymog'i bilan taqdim etiladi."
+  },
+  {
+    id: 11,
+    name: "Oltin Raf Qahvasi",
+    cat: "Ichimliklar",
+    price: 28000,
+    badge: "✨ Maxsus",
+    img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=900&q=85",
+    tags: ["Tabiiy qaymoq", "Vanil", "Espresso"],
+    desc: "Yumshoq espressoni issiq qaymoq va tabiiy vanil bilan ko'pirtirib tayyorlangan qandolat uyi imzo ichimligi."
+  }
+];
+
+const CATEGORIES = ["Barchasi", "Tortlar", "Chizkeyklar", "Kruassanlar", "Sharqona", "Desertlar", "Ichimliklar"];
+
+/* ══════════════════════════════════════════════════════════════════
+   GLOBAL APPLICATION STATE
+══════════════════════════════════════════════════════════════════ */
+let currentStol = 1;
+let currentCategory = "Barchasi";
+let cart = [];
+let scannerStream = null;
+let scanInterval = null;
+let currentARDessert = DESSERTS[0];
+let qrCodeInstance = null;
+let isQRScanned = false; // QR kod skaner qilingan yoki yo'qligi flagi
+
+/* ══════════════════════════════════════════════════════════════════
+   WEB AUDIO SOUNDS & CHIMES
+══════════════════════════════════════════════════════════════════ */
+let audioCtx = null;
+function playLuxurySound(type = 'bell') {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    if (type === 'bell') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.50, now); // C6
+      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
+      osc.start(now);
+      osc.stop(now + 0.85);
+    } else if (type === 'scan') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, now); // D5
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.16); // A5
+      gain.gain.setValueAtTime(0.28, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.42);
+      osc.start(now);
+      osc.stop(now + 0.42);
+    } else if (type === 'add') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.08);
+      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.26);
+      osc.start(now);
+      osc.stop(now + 0.26);
+    }
+  } catch (e) {}
+}
+
+/* Background Ambient Music (Mellow Cafe Chords) */
+let isMusicPlaying = false;
+let musicInterval = null;
+function toggleCafeMusic() {
+  const btn = document.getElementById('music-toggle-btn');
+  if (isMusicPlaying) {
+    clearInterval(musicInterval);
+    isMusicPlaying = false;
+    btn.classList.remove('playing');
+    showToast("🔇 Kafe musiqasi to'xtatildi");
+  } else {
+    isMusicPlaying = true;
+    btn.classList.add('playing');
+    showToast("🎵 Parij kafe musiqasi yangramoqda");
+    playLuxurySound('bell');
+    
+    const chords = [
+      [261.63, 329.63, 392.00], // C
+      [220.00, 261.63, 329.63], // Am
+      [174.61, 220.00, 261.63], // F
+      [196.00, 246.94, 293.66]  // G
+    ];
+    let step = 0;
+    musicInterval = setInterval(() => {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const chord = chords[step % chords.length];
+        step++;
+        chord.forEach(freq => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.8);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 4);
+        });
+      } catch (e) {}
+    }, 4000);
+  }
+}
+
+/* Ofitsiantni chaqirish */
+function callWaiter() {
+  playLuxurySound('bell');
+  triggerConfetti();
+  alert(`🛎️ OFITSIANT CHAQIRILDI!\n\nStol: #${currentStol}\nOfitsiantimiz hoziroq stolingizga yetib keladi.`);
+  showToast(`🛎️ Stol #${currentStol} ga ofitsiant chaqirildi!`);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   SPA NAVIGATION & ACCESS CONTROL GUARD
+══════════════════════════════════════════════════════════════════ */
+function openPage(pageId) {
+  // AGAR QR KOD SKANERLANMAGAN BO'LSA MENYU VA SAVATGA RUXSAT BERILMAYDI!
+  if ((pageId === 'menu' || pageId === 'cart') && !isQRScanned) {
+    playLuxurySound('bell');
+    showLockedModal();
+    return;
+  }
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  const navbar = document.getElementById('navbar');
+
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Saytga kirganda (Home) navbar yashirin bo'ladi, faqat QR skanerlangach menyu/savatda ko'rinadi
+  if (pageId === 'home') {
+    if (navbar) navbar.classList.remove('show-nav');
+  } else {
+    if (navbar) navbar.classList.add('show-nav');
+  }
+
+  if (pageId === 'menu') {
+    renderMenuCards();
+  } else if (pageId === 'cart') {
+    renderCart();
+  }
+}
+
+function showLockedModal() {
+  const modal = document.getElementById('locked-modal-overlay');
+  if (modal) modal.classList.add('active');
+}
+
+function closeLockedModal() {
+  const modal = document.getElementById('locked-modal-overlay');
+  if (modal) modal.classList.remove('active');
+}
+
+/* QR KOD MUOFFAQIYATLI SKANERLANGANDA CHAQIRILADI */
+function verifyQRSuccess(stolNum = currentStol, sourceMsg = "QR kod skanerlandi!") {
+  isQRScanned = true;
+  sessionStorage.setItem('safia_qr_verified', 'true');
+  sessionStorage.setItem('safia_active_stol', stolNum);
+  
+  selectStol(stolNum);
+  updateLockStatusUI(true);
+  
+  playLuxurySound('scan');
+  triggerConfetti();
+  
+  showToast(`✨ QR Kod tasdiqlandi! Stol #${stolNum} menyusi ochildi`);
+  
+  openPage('menu');
+}
+
+/* MENYUNI YOPISH VA QULFLASH */
+function lockAndExitMenu() {
+  isQRScanned = false;
+  sessionStorage.removeItem('safia_qr_verified');
+  sessionStorage.removeItem('safia_active_stol');
+  
+  updateLockStatusUI(false);
+  openPage('home');
+  showToast("🔒 Menyu yopildi. Menyuni ochish uchun QR kodni skanerlang.");
+}
+
+function updateLockStatusUI(unlocked) {
+  const badge = document.getElementById('qr-lock-status-badge');
+  if (badge) {
+    if (unlocked) {
+      badge.className = 'qr-lock-status unlocked';
+      badge.innerHTML = '<span>🟢</span> <span>Menyu ochiq • QR kod tasdiqlangan</span>';
+    } else {
+      badge.className = 'qr-lock-status locked';
+      badge.innerHTML = '<span id="qr-lock-icon">🔒</span> <span id="qr-lock-text">Menyu yopiq • QR kodni skanerlang</span>';
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   REAL QR CODE GENERATION & SITE URL CONFIG
+══════════════════════════════════════════════════════════════════ */
+let customSiteUrl = localStorage.getItem('safia_custom_site_url') || '';
+
+function getBaseSiteUrl() {
+  if (customSiteUrl && customSiteUrl.trim().length > 0) {
+    let url = customSiteUrl.trim();
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'http://' + url;
+    }
+    return url;
+  }
+  // Agar sayt internetda/serverda ochilgan bo'lsa
+  if (window.location.protocol !== 'file:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return window.location.origin + window.location.pathname;
+  }
+  // Kompyuterning mahalliy Wi-Fi IP manzili
+  return 'http://192.168.1.23:8080/safiya-cafe.html';
+}
+
+function saveCustomSiteUrl() {
+  const input = document.getElementById('custom-site-url-input');
+  if (!input) return;
+  const val = input.value.trim();
+  if (val.length === 0) {
+    resetSiteUrl();
+    return;
+  }
+  customSiteUrl = val;
+  localStorage.setItem('safia_custom_site_url', customSiteUrl);
+  generateRealQRCode(currentStol);
+  showToast("✅ QR Kod sayt havolasi yangilandi!");
+  playLuxurySound('bell');
+}
+
+function resetSiteUrl() {
+  customSiteUrl = '';
+  localStorage.removeItem('safia_custom_site_url');
+  const input = document.getElementById('custom-site-url-input');
+  if (input) input.value = '';
+  generateRealQRCode(currentStol);
+  showToast("🔄 Havola asliga qaytarildi");
+}
+
+function generateRealQRCode(stolNum) {
+  const container = document.getElementById('real-qr-canvas');
+  if (!container) return;
+  container.innerHTML = '';
+  
+  const baseUrl = getBaseSiteUrl();
+  const sep = baseUrl.includes('?') ? '&' : '?';
+  // Skanerlanganda to'g'ridan-to'g'ri sayt va menyu ochilishi uchun URL
+  const fullUrl = `${baseUrl}${sep}scan=1&stol=${stolNum}#menu`;
+  
+  const urlDisplay = document.getElementById('qr-current-url-display');
+  if (urlDisplay) urlDisplay.textContent = fullUrl;
+  
+  const input = document.getElementById('custom-site-url-input');
+  if (input && !input.value && customSiteUrl) {
+    input.value = customSiteUrl;
+  }
+  
+  if (typeof QRCode !== 'undefined') {
+    qrCodeInstance = new QRCode(container, {
+      text: fullUrl,
+      width: 206,
+      height: 206,
+      colorDark: "#1a0d24",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
+}
+
+// QR Kodni PNG rasm shaklida yuklab olish
+function downloadQRCodePNG() {
+  const container = document.getElementById('real-qr-canvas');
+  if (!container) return;
+  
+  let dataUrl = '';
+  const canvas = container.querySelector('canvas');
+  if (canvas) {
+    dataUrl = canvas.toDataURL('image/png');
+  } else {
+    const img = container.querySelector('img');
+    if (img) dataUrl = img.src;
+  }
+  
+  if (!dataUrl) {
+    showToast("⚠️ QR kod hali yuklanmadi, biroz kuting.");
+    return;
+  }
+
+  const a = document.createElement('a');
+  a.download = `safia-stol-${currentStol}-qr.png`;
+  a.href = dataUrl;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast(`📥 Stol #${currentStol} QR kodi rasm qilib saqlandi!`);
+}
+
+function initStolSelectorChips() {
+  const container = document.getElementById('stol-selector-chips');
+  if (!container) return;
+  container.innerHTML = '';
+  for (let i = 1; i <= 12; i++) {
+    const chip = document.createElement('div');
+    chip.className = `scb-chip ${i === currentStol ? 'active' : ''}`;
+    chip.textContent = i;
+    chip.onclick = () => selectStol(i);
+    container.appendChild(chip);
+  }
+}
+
+function selectStol(num) {
+  currentStol = num;
+  document.querySelectorAll('.scb-chip').forEach((c, idx) => {
+    c.classList.toggle('active', (idx + 1) === num);
+  });
+  
+  const standStol = document.getElementById('stand-stol-title');
+  if (standStol) standStol.textContent = `STOL #${num}`;
+  
+  const menuStol = document.getElementById('menu-active-stol');
+  if (menuStol) menuStol.textContent = `STOL #${num} • QR SKANER TASDIQLANDI`;
+  
+  const camStol = document.getElementById('cam-active-stol');
+  if (camStol) camStol.textContent = num;
+  
+  const cartStol = document.getElementById('cart-stol-badge');
+  if (cartStol) cartStol.textContent = `Stol #${num}`;
+  
+  const scbSelected = document.getElementById('scb-selected-text');
+  if (scbSelected) scbSelected.textContent = `Stol #${num}`;
+  
+  generateRealQRCode(num);
+}
+
+/* STENDDAGI QR KOD USTIGA BOSILGANDA SKANERLASH */
+function scanStandQR() {
+  const layer = document.getElementById('qr-scanning-layer');
+  if (layer) layer.classList.add('active');
+  
+  playLuxurySound('scan');
+  
+  setTimeout(() => {
+    if (layer) layer.classList.remove('active');
+    verifyQRSuccess(currentStol, "Stoldagi QR kod muvaffaqiyatli skanerlandi!");
+  }, 250);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   LIVE CAMERA SCANNER
+══════════════════════════════════════════════════════════════════ */
+async function openLiveCameraScanner() {
+  const overlay = document.getElementById('scanner-overlay');
+  overlay.classList.add('active');
+  const video = document.getElementById('scanner-video');
+
+  try {
+    scannerStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' },
+      audio: false
+    });
+    video.srcObject = scannerStream;
+    startQRDecoding(video);
+  } catch (err) {
+    showToast("⚠️ Kamera ochilmadi. Quyidagi tugma orqali menyuni ochishingiz mumkin.");
+  }
+}
+
+function closeLiveCameraScanner() {
+  document.getElementById('scanner-overlay').classList.remove('active');
+  if (scannerStream) {
+    scannerStream.getTracks().forEach(t => t.stop());
+    scannerStream = null;
+  }
+  if (scanInterval) {
+    clearInterval(scanInterval);
+    scanInterval = null;
+  }
+}
+
+function startQRDecoding(video) {
+  const canvas = document.getElementById('scan-hidden-canvas');
+  const ctx = canvas.getContext('2d');
+
+  scanInterval = setInterval(() => {
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      if (typeof jsQR !== 'undefined') {
+        const code = jsQR(imgData.data, imgData.width, imgData.height);
+        if (code && code.data) {
+          closeLiveCameraScanner();
+          const m = code.data.match(/stol=(\d+)/);
+          const foundStol = (m && m[1]) ? parseInt(m[1]) : currentStol;
+          verifyQRSuccess(foundStol, "Kamera orqali QR kod skanerlandi!");
+        }
+      }
+    }
+  }, 250);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   AR CAMERA: SEE REAL PHOTO DESSERT ON TABLE
+══════════════════════════════════════════════════════════════════ */
+async function previewDessertInAR(dessertId) {
+  const dessert = DESSERTS.find(d => d.id === dessertId) || DESSERTS[0];
+  currentARDessert = dessert;
+
+  document.getElementById('ar-dessert-img').src = dessert.img;
+  document.getElementById('ar-dessert-name').textContent = dessert.name;
+  document.getElementById('ar-dessert-price').textContent = dessert.price.toLocaleString('uz-UZ') + " so'm";
+
+  const arOverlay = document.getElementById('ar-overlay');
+  arOverlay.classList.add('active');
+
+  const video = document.getElementById('ar-video');
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' },
+      audio: false
+    });
+    video.srcObject = stream;
+  } catch (err) {}
+}
+
+function closeAR() {
+  const arOverlay = document.getElementById('ar-overlay');
+  arOverlay.classList.remove('active');
+  const video = document.getElementById('ar-video');
+  if (video.srcObject) {
+    video.srcObject.getTracks().forEach(t => t.stop());
+    video.srcObject = null;
+  }
+}
+
+function addCurrentARToCart() {
+  addToCart(currentARDessert.id);
+  closeAR();
+  showToast(`✨ ${currentARDessert.name} savatga qo'shildi!`);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MENU RENDERING & REAL PHOTO CARDS
+══════════════════════════════════════════════════════════════════ */
+function initCategories() {
+  const container = document.getElementById('category-pills');
+  container.innerHTML = CATEGORIES.map(cat => `
+    <button class="cat-pill ${cat === currentCategory ? 'active' : ''}" onclick="filterByCategory('${cat}')">
+      ${cat}
+    </button>
+  `).join('');
+}
+
+function filterByCategory(cat) {
+  currentCategory = cat;
+  initCategories();
+  renderMenuCards();
+}
+
+function filterMenuCards() {
+  renderMenuCards();
+}
+
+function renderMenuCards() {
+  const query = (document.getElementById('menu-search-input')?.value || '').toLowerCase();
+  const grid = document.getElementById('menu-grid');
+
+  const filtered = DESSERTS.filter(item => {
+    const matchCat = currentCategory === "Barchasi" || item.cat === currentCategory;
+    const matchQ = !query || item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+    return matchCat && matchQ;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align:center; padding: 70px 20px; color:var(--txt-muted);">
+        <p style="font-size:3rem; margin-bottom:12px;">🍰</p>
+        <h3>Kechirasiz, bunday shirinlik topilmadi</h3>
+        <p style="font-size:0.88rem; margin-top:6px;">Boshqa kategoriya yoki nom bo'yicha qidiring.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => {
+    const isAdded = cart.some(c => c.id === item.id);
+    return `
+      <div class="dessert-card">
+        <div class="dc-photo-box">
+          <img class="dc-real-img" src="${item.img}" alt="${item.name}" loading="lazy">
+          <div class="dc-photo-gradient"></div>
+          <span class="dc-badge">${item.badge}</span>
+          <button class="dc-ar-btn" onclick="previewDessertInAR(${item.id})">
+            <span>👁️</span> Stolda ko'rish
+          </button>
+        </div>
+        <div class="dc-body">
+          <div>
+            <div class="dc-tags">
+              ${item.tags.map(t => `<span class="dc-tag">#${t}</span>`).join('')}
+            </div>
+            <h3 class="dc-name">${item.name}</h3>
+            <p class="dc-desc">${item.desc}</p>
+          </div>
+          <div class="dc-footer">
+            <span class="dc-price">${item.price.toLocaleString('uz-UZ')} so'm</span>
+            <button class="dc-add-btn ${isAdded ? 'added' : ''}" onclick="addToCart(${item.id})">
+              ${isAdded ? '✓' : '+'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CART & ORDER MANAGEMENT
+══════════════════════════════════════════════════════════════════ */
+function addToCart(dessertId) {
+  const item = DESSERTS.find(d => d.id === dessertId);
+  if (!item) return;
+
+  const existing = cart.find(c => c.id === dessertId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: dessertId, qty: 1 });
+  }
+
+  playLuxurySound('add');
+  updateCartBadge();
+  renderMenuCards();
+  showToast(`✨ ${item.name} savatga qo'shildi`);
+}
+
+function updateCartQty(dessertId, delta) {
+  const item = cart.find(c => c.id === dessertId);
+  if (!item) return;
+
+  item.qty += delta;
+  if (item.qty <= 0) {
+    cart = cart.filter(c => c.id !== dessertId);
+  }
+  updateCartBadge();
+  renderCart();
+  renderMenuCards();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-nav-badge');
+  if (total > 0) {
+    badge.style.display = 'flex';
+    badge.textContent = total;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function renderCart() {
+  const container = document.getElementById('cart-items-list');
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center; padding: 45px 10px; color:var(--txt-muted);">
+        <p style="font-size:3.5rem; margin-bottom:14px;">🛒</p>
+        <h3>Savatingiz bo'sh</h3>
+        <p style="font-size:0.88rem; margin-top:6px;">Menyudan lazzatli shirinliklarni tanlang.</p>
+      </div>
+    `;
+    document.getElementById('cart-subtotal').textContent = "0 so'm";
+    document.getElementById('cart-total').textContent = "0 so'm";
+    return;
+  }
+
+  let totalSum = 0;
+  container.innerHTML = cart.map(cartItem => {
+    const dessert = DESSERTS.find(d => d.id === cartItem.id);
+    if (!dessert) return '';
+    const itemTotal = dessert.price * cartItem.qty;
+    totalSum += itemTotal;
+
+    return `
+      <div class="cart-item-row">
+        <img src="${dessert.img}" class="cir-thumb" alt="${dessert.name}">
+        <div class="cir-info">
+          <div class="cir-name">${dessert.name}</div>
+          <div class="cir-price">${dessert.price.toLocaleString('uz-UZ')} so'm × ${cartItem.qty}</div>
+        </div>
+        <div class="cir-ctrl">
+          <button class="cir-btn" onclick="updateCartQty(${dessert.id}, -1)">−</button>
+          <span class="cir-qty">${cartItem.qty}</span>
+          <button class="cir-btn" onclick="updateCartQty(${dessert.id}, 1)">+</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('cart-subtotal').textContent = totalSum.toLocaleString('uz-UZ') + " so'm";
+  document.getElementById('cart-total').textContent = totalSum.toLocaleString('uz-UZ') + " so'm";
+}
+
+function submitOrder() {
+  if (cart.length === 0) {
+    showToast("⚠️ Savatingiz bo'sh!");
+    return;
+  }
+
+  triggerConfetti();
+  playLuxurySound('bell');
+  
+  const orderId = Math.floor(1000 + Math.random() * 9000);
+  alert(`✨ BUYURTMA QABUL QILINDI!\n\nBuyurtma raqami: #SF-${orderId}\nStol: #${currentStol}\n\nQandolatchilarimiz buyurtmangizni tayyorlamoqda. Yoqimli ishtaha!`);
+  
+  cart = [];
+  updateCartBadge();
+  openPage('home');
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   VISUAL EFFECTS: STARDUST & CONFETTI
+══════════════════════════════════════════════════════════════════ */
+function triggerConfetti() {
+  if (typeof confetti !== 'undefined') {
+    confetti({
+      particleCount: 140,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#f7d594', '#e87b96', '#ffdbe4', '#ffffff', '#dfa84f']
+    });
+  }
+}
+
+let toastTimeout = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast-box');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+// Background Stardust Particles
+(function() {
+  const canvas = document.getElementById('stardust-canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height, stars = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 70; i++) {
+    stars.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.6 + 0.3,
+      alpha: Math.random() * 0.6 + 0.25,
+      dy: -(Math.random() * 0.35 + 0.1),
+      gold: Math.random() > 0.35
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    stars.forEach(s => {
+      s.y += s.dy;
+      if (s.y < 0) s.y = height;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+      ctx.fillStyle = s.gold ? `rgba(247, 213, 148, ${s.alpha})` : `rgba(255, 219, 228, ${s.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ══════════════════════════════════════════════════════════════════
+   INITIALIZATION & STRICT QR ACCESS CHECK
+══════════════════════════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+  initStolSelectorChips();
+  initCategories();
+  generateRealQRCode(currentStol);
+
+  // URL parametrlarini tekshirish (?scan=1&stol=X yoki oddiy ?stol=X yoki hash #menu)
+  const urlParams = new URLSearchParams(window.location.search);
+  const scanParam = urlParams.get('scan') || urlParams.get('qr_scan');
+  const stolParam = urlParams.get('stol');
+
+  // Agar QR kod orqali skaner qilib kirilgan bo'lsa (?scan=1 YOKI ?stol=... YOKI #menu)
+  if (scanParam === '1' || scanParam === 'true' || (stolParam && !isNaN(stolParam)) || window.location.hash.includes('menu')) {
+    const s = (stolParam && !isNaN(stolParam)) ? parseInt(stolParam) : 1;
+    verifyQRSuccess(s, "QR kod orqali menyu ochildi!");
+    return;
+  }
+
+  // 2. Agar avvalgi sessiyada tasdiqlangan bo'lsa
+  if (sessionStorage.getItem('safia_qr_verified') === 'true') {
+    const savedStol = parseInt(sessionStorage.getItem('safia_active_stol')) || 1;
+    isQRScanned = true;
+    selectStol(savedStol);
+    updateLockStatusUI(true);
+    openPage('menu');
+    return;
+  }
+
+  // 3. Agar QR kod skaner qilinmagan bo'lsa:
+  isQRScanned = false;
+  updateLockStatusUI(false);
+  openPage('home');
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+</script>
+</body>
+</html>
